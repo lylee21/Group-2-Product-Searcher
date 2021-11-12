@@ -1,0 +1,19 @@
+{
+  "name": "group-2-product-searcher",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lylee21/Group-2-Product-Searcher.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lylee21/Group-2-Product-Searcher/issues"
+  },
+  "homepage": "https://github.com/lylee21/Group-2-Product-Searcher#readme"
+}
