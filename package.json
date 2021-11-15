@@ -1,15 +1,7 @@
 {
-  "dependencies": {
-    "axios": "^0.24.0",
-    "cheerio": "^1.0.0-rc.10",
-    "cherio": "^1.0.0-rc.2",
-    "express": "^4.17.1",
-    "pretty": "^2.0.0",
-    "request": "^2.88.2"
-  },
   "name": "group-2-product-searcher",
-  "description": "",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -23,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/lylee21/Group-2-Product-Searcher/issues"
   },
-  "homepage": "https://github.com/lylee21/Group-2-Product-Searcher#readme"
+  "homepage": "https://github.com/lylee21/Group-2-Product-Searcher#readme",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "cheerio": "^1.0.0-rc.10",
+    "express": "^4.17.1"
+  }
 }
