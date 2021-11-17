@@ -3,6 +3,7 @@
 // PUT /api/products/1
 // DELETE /api/products/1
 // POST /api/products
+const _ = require("lodash");
 const Joi = require("joi");
 const express = require("express");
 const get_product_list = require("./bootstrap.js");
@@ -20,24 +21,53 @@ function validate_product(product) {
 }
 
 //-------------------------------ROUTES---------------------------------------
-//another all products
+app.get("/", (req, res) => {
+    res.send("Hello World!");
+});
+
+//filter the search
 app.get("/api/products", (req, res) => {
-    res.send(products);
+    var response = [];
+    console.log("Query:", req.query);
+    if (typeof req.query.name != "undefined") {
+        products.filter((product) => {
+            if (product.name.toLocaleLowerCase().includes(req.query.name)) {
+                response.push(product);
+            }
+        });
+    }
+
+    // this would usually adjust your database query
+    if (typeof req.query.id != "undefined") {
+        products.filter((product) => {
+            if (product.id == req.query.id) {
+                response.push(product);
+            }
+        });
+    }
+
+    // de-duplication:
+    response = _.uniqBy(response, "id");
+
+    // in case no filtering has been applied, respond with all stores
+    if (Object.keys(req.query).length === 0) {
+        response = products;
+    }
+    res.send(response);
 });
 
 //another products by id
-app.get("/api/products/:id", (req, res) => {
-    const product = products.find((c) => c.id === parseInt(req.params.id));
-    if (!product) return res.status(404).send("The product ID is not found.");
-    res.send(`${product.name}`);
-});
+// app.get("/api/products/:id", (req, res) => {
+//     const product = products.find((c) => c.id === parseInt(req.params.id));
+//     if (!product) return res.status(404).send("The product ID is not found.");
+//     res.send(`${product.name}`);
+// });
 
 //post products
 app.post("/api/products", (req, res) => {
     const { value, error } = validate_product(req.body.name);
     if (error) return res.status(400).send(error.details[0].message);
     const product = {
-        id: products.length + 1,
         name: req.body.name,
     };
     products.push(product);

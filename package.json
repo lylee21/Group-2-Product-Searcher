@@ -5,8 +5,11 @@
     "cherio": "^1.0.0-rc.2",
     "express": "^4.17.1",
     "joi": "^17.4.2",
+    "lodash": "^4.17.21",
     "pretty": "^2.0.0",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "sequelize": "^6.9.0",
+    "sqlite3": "^5.0.2"
   },
   "name": "group-2-product-searcher",
   "description": "",
@@ -14,7 +17,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"nodemon ziyu_api.js"
+    "start": "nodemon ziyu_api.js"
   },
   "repository": {
     "type": "git",
