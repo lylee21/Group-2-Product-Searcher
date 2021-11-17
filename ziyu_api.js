@@ -28,7 +28,6 @@ app.get("/", (req, res) => {
 //filter the search
 app.get("/api/products", (req, res) => {
     var response = [];
-    console.log("Query:", req.query);
     if (typeof req.query.name != "undefined") {
         products.filter((product) => {
             if (product.name.toLocaleLowerCase().includes(req.query.name)) {
