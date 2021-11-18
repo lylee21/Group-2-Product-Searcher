@@ -1,20 +1,17 @@
-// GET /api/products
-// GET /api/products/1
-// PUT /api/products/1
-// DELETE /api/products/1
-// POST /api/products
 const _ = require("lodash");
 const Joi = require("joi");
 const express = require("express");
 const cors = require("cors");
-const get_product_list = require("./bootstrap.js");
+// const get_product_list = require("./bootstrap.js");
 const app = express();
+const products = require("./models/index");
 const dotenv = require("dotenv");
 dotenv.config();
 app.use(express.json());
 app.use(cors());
+
 //get all products
-const products = get_product_list();
+// const products = get_product_list();
 
 //validation function
 function validate_product(product) {

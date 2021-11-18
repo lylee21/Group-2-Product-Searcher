@@ -1,29 +1,25 @@
-const axios = require("axios");
-const cheerio = require("cheerio");
-const pretty = require("pretty");
-const userInput = null; // update
-const request = require("request");
+const { Sequelize, DataTypes } = require("sequelize");
+const {init} = require("../bootstrap");
 
-// Product.findAll({
-//     where: {
-//         name: {
-//             [Op.like]: userInput,
-//         },
-//     },
-//     order: [["name", "ASC"]],
-// });
+const sequelize = new Sequelize('sqlite::memory:') 
 
-request("https://shopee.sg/", (error, response, html) => {
-    if (!error && response.statusCode == 200) {
-        const $ = cheerio.load(html);
+//import model
+const Product = require("./product.model")(sequelize);
 
-        $("._1syN0y").each((i, el) => {
-            const title = $(el).find("._1YAByT").text();
-
-            // Write Row To CSV
-            writeStream.write(`${title} \n`);
-        });
-
-        console.log("Scraping Done...");
+//test connection
+(async function() {
+    try {
+        await sequelize.authenticate();
+        await sequelize.sync({force:true});
+        console.log("Connection has been established successfully.");
+        init(Product);
+        return true;
+    } catch (error) {
+        console.error("Unable to connect to the database:", error);
+        return false;
     }
-});
+})();
+
+module.exports = {
+    Product
+}
