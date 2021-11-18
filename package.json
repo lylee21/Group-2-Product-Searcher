@@ -1,7 +1,21 @@
 {
+  "dependencies": {
+    "axios": "^0.24.0",
+    "cheerio": "^1.0.0-rc.10",
+    "cherio": "^1.0.0-rc.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "joi": "^17.4.2",
+    "lodash": "^4.17.21",
+    "nodemon": "^2.0.15",
+    "pretty": "^2.0.0",
+    "request": "^2.88.2",
+    "sequelize": "^6.9.0",
+    "sqlite3": "^5.0.2"
+  },
   "name": "group-2-product-searcher",
-  "version": "1.0.0",
   "description": "",
+  "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -16,12 +30,5 @@
   "bugs": {
     "url": "https://github.com/lylee21/Group-2-Product-Searcher/issues"
   },
-  "homepage": "https://github.com/lylee21/Group-2-Product-Searcher#readme",
-  "dependencies": {
-    "axios": "^0.24.0",
-    "cheerio": "^1.0.0-rc.10",
-    "express": "^4.17.1",
-    "sequelize": "^6.9.0",
-    "sqlite3": "^5.0.2"
-  }
+  "homepage": "https://github.com/lylee21/Group-2-Product-Searcher#readme"
 }
