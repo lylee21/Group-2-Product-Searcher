@@ -1,4 +1,5 @@
 const { Sequelize, DataTypes } = require("sequelize");
+const {init} = require("../bootstrap");
 
 const sequelize = new Sequelize('sqlite::memory:') 
 
@@ -10,7 +11,8 @@ const Product = require("./product.model")(sequelize);
     try {
         await sequelize.authenticate();
         await sequelize.sync({force:true});
-        console.log("Connection has been established successfully.");;
+        console.log("Connection has been established successfully.");
+        init(Product);
         return true;
     } catch (error) {
         console.error("Unable to connect to the database:", error);
