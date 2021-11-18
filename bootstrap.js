@@ -2,6 +2,7 @@ const fs = require('fs');
 const html = fs.readFileSync('./resources/dataset.html', "utf-8");
 const {Product} = require("./models"); 
 
+
 const cheerio = require('cheerio'); 
 const $ = cheerio.load(html)
 
@@ -17,6 +18,7 @@ for (let i = 0 ; i < nameDoms.length ; i++){
     }
     productList.push(product);
     Product.bulkCreate(productList);
+
 }
 
 console.log(productList);

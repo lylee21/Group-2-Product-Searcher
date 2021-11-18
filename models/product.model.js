@@ -15,13 +15,13 @@ module.exports = function (sequelize) {
                 allowNull: false
             },
             price:{
+
                 type: DataTypes.STRING,
                 allowNull: false
             },
         },
         {
-            sequelize: sequelize,
-            tableName: "Products"
+            sequelize
         }
     );
     return Product;
