@@ -9,6 +9,8 @@ const express = require("express");
 const get_product_list = require("./bootstrap.js");
 const app = express();
 app.use(express.json());
+const cors = require("cors");
+app.use(cors());
 //get all products
 const products = get_product_list();
 
