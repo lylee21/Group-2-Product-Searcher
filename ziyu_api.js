@@ -6,9 +6,13 @@
 const _ = require("lodash");
 const Joi = require("joi");
 const express = require("express");
+const cors = require("cors");
 const get_product_list = require("./bootstrap.js");
 const app = express();
+const dotenv = require("dotenv");
+dotenv.config();
 app.use(express.json());
+app.use(cors());
 //get all products
 const products = get_product_list();
 
