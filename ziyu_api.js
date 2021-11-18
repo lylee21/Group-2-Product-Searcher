@@ -17,6 +17,7 @@ app.use(cors());
 function validate_product(product) {
     const schema = Joi.object({
         name: Joi.string().min(3).max(50).required(),
+        price: Joi.required(),
     });
     return schema.validate({ name: product });
 }
