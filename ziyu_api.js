@@ -1,33 +1,26 @@
-const _ = require("lodash");
 const Joi = require("joi");
 const express = require("express");
-const cors = require("cors");
-// const get_product_list = require("./bootstrap.js");
+const get_product_list = require("./bootstrap.js");
 const app = express();
-const products = require("./models/index");
-const dotenv = require("dotenv");
-dotenv.config();
 app.use(express.json());
-app.use(cors());
-
 //get all products
-// const products = get_product_list();
+const products = get_product_list();
 
 //validation function
 function validate_product(product) {
     const schema = Joi.object({
         name: Joi.string().min(3).max(50).required(),
-        price: Joi.required(),
     });
     return schema.validate({ name: product });
 }
 
 //-------------------------------ROUTES---------------------------------------
-app.get("/", (req, res) => {
-    res.send("Hello World!");
+//another all products
+app.get("/api/products", (req, res) => {
+    res.send(products);
 });
 
-//filter the search
+//another products by id
 app.get("/api/products", (req, res) => {
     var response = [];
     if (typeof req.query.name != "undefined") {
@@ -57,18 +50,12 @@ app.get("/api/products", (req, res) => {
     res.send(response);
 });
 
-//another products by id
-// app.get("/api/products/:id", (req, res) => {
-//     const product = products.find((c) => c.id === parseInt(req.params.id));
-//     if (!product) return res.status(404).send("The product ID is not found.");
-//     res.send(`${product.name}`);
-// });
-
 //post products
 app.post("/api/products", (req, res) => {
     const { value, error } = validate_product(req.body.name);
     if (error) return res.status(400).send(error.details[0].message);
     const product = {
+        id: products.length + 1,
         name: req.body.name,
     };
     products.push(product);
